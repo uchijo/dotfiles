@@ -12,18 +12,62 @@ create_symlink() {
         return 1
     fi
 
-    # 既にあったら退避
+    # 既にあったら何もしない
     if [ -e "$TARGET_FILE" ]; then
-        echo "$TARGET_FILE already exists in $HOME. renaming..."
-        mv "$TARGET_FILE" "$TARGET_FILE.old"
+        echo "already exist: $FILENAME"
+        return 1
     fi
 
     ln -s "$SOURCE_FILE" "$TARGET_FILE"
-    echo "$TARGET_FILE -> $SOURCE_FILE のシンボリックリンクを作成しました"
+    echo "created symbolic link: $FILENAME"
+}
+
+# checks wheather desired command is installed
+command_ok() {
+    local COMMAND_NAME=$1
+
+    if ! which $COMMAND_NAME > /dev/null 2>&1; then
+        echo "not installed: $COMMAND_NAME"
+        return 1
+    fi
+    return 0
 }
 
 # create symbolic link
+echo "[start]   create symbolic link"
 create_symlink ".vimrc"
 create_symlink ".tmux.conf"
 create_symlink ".zshrc_origin"
 create_symlink ".gitconfig"
+echo "[end]     create symbolic link"
+echo ""
+
+# check required tools
+echo "[start]   check required tools"
+IS_READY=1
+command_ok "git" || IS_READY=0
+command_ok "vim" || IS_READY=0
+command_ok "curl" || IS_READY=0
+command_ok "zsh" || IS_READY=0
+command_ok "tmux" || IS_READY=0
+if [ $IS_READY -eq 0 ]; then
+    echo "[abort]   check required tools"
+    echo "install missing tools and re-run this script."
+    exit 1
+fi
+echo "[end]     check required tools"
+echo ""
+
+# install vim-plug
+echo "[start]   install vim-plug"
+if [ ! -e "$HOME/.vim/autoload/plug.vim" ]; then
+    echo "installing vim-plug"
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+else
+    echo "already installed: vim-plug"
+fi
+echo "[end]     install vim-plug"
+echo ""
+
+echo "setup complete!"
