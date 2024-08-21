@@ -1,0 +1,76 @@
+# vim-like line editor
+bindkey -v
+bindkey "jj" vi-cmd-mode
+
+# git prompt setting
+autoload -Uz vcs_info
+setopt prompt_subst
+
+zstyle ':vcs_info:*' formats "
+%F{yellow}(%r %b)%f%c%u"
+zstyle ':vcs_info:*' actionformats "
+%F{yellow}(%r %b | %a)%f%c%u"
+precmd () { vcs_info }
+
+# command prompt setting
+PROMPT='
+%F{green}%n@%m%f:%F{033}%~%f $vcs_info_msg_0_
+$ '
+
+# alias for commands
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# GOPATH settings
+export GOPATH=$HOME/go
+
+# git command setting
+fpath=(~/.zsh/completion $fpath)
+autoload -U compinit
+compinit -u
+zmodload -i zsh/complist
+
+# completion settings
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' menu select
+
+# completion with vim commands
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# zsh text object settings
+autoload -U select-bracketed
+zle -N select-bracketed
+for m in visual viopp; do
+	for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+		bindkey -M $m $c select-bracketed
+	done
+done
+
+autoload -U select-quoted
+zle -N select-quoted
+for m in visual viopp; do
+  for c in {a,i}{\',\",\`}; do
+    bindkey -M $m $c select-quoted
+  done
+done
+
+autoload -Uz surround
+zle -N delete-surround surround
+zle -N change-surround surround
+zle -N add-surround surround
+bindkey -a cs change-surround
+bindkey -a ds delete-surround
+bindkey -a ys add-surround
+bindkey -M visual S add-surround
+
+# zsh-autosuggestions settings
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh-syntax-highlighting settings
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
