@@ -1,0 +1,9 @@
+[user]
+	email = kgtnttki.yuta@gmail.com
+	name = Uchijo
+[core]
+	editor = vim
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
