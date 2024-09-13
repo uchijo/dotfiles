@@ -70,4 +70,27 @@ fi
 echo "[end]     install vim-plug"
 echo ""
 
+# install zsh plugins
+echo "[start]   install zsh plugins"
+if [ ! -e "$HOME/.zsh/" ]; then
+    echo "creating ~/.zsh/ directory"
+    cd "$HOME/"
+    mkdir .zsh
+fi
+if [ ! -e "$HOME/.zsh/zsh-autosuggestions/" ]; then
+    echo "installing zsh-autosuggestions"
+    cd "$HOME/.zsh/"
+    git clone git@github.com:zsh-users/zsh-autosuggestions
+else
+    echo "already installed: zsh-autosuggestions"
+fi
+if [ ! -e "$HOME/.zsh/zsh-syntax-highlighting/" ]; then
+    echo "installing zsh-syntax-highlighting"
+    cd "$HOME/.zsh/"
+    git clone git@github.com:zsh-users/zsh-syntax-highlighting
+else
+    echo "already installed: zsh-syntax-highlighting"
+fi
+echo "[end]     install zsh plugins"
+
 echo "setup complete!"
