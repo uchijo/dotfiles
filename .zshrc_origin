@@ -76,3 +76,13 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # zsh-syntax-highlighting settings
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# search history with fzf
+
+function fzf-select-history() {
+	BUFFER=$(history -n -r | uniq | fzf)
+	CURSOR=$#BUFFER
+	zle reset-prompt
+}
+zle -N fzf-select-history
+bindkey '^[h' fzf-select-history
+
