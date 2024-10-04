@@ -33,12 +33,13 @@ command_ok() {
     return 0
 }
 
-# create symbolic link
+# create symbolic link and related files
 echo "[start]   create symbolic link"
 create_symlink ".vimrc"
 create_symlink ".tmux.conf"
 create_symlink ".zshrc_origin"
 create_symlink ".gitconfig"
+touch ~/.zshrc
 echo "[end]     create symbolic link"
 echo ""
 

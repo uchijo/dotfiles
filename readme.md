@@ -13,6 +13,17 @@ $ ./install.sh
 ...
 ```
 
+その後、~/.zshrcに以下の行を追加
+
+```.zshrc
+# set this to change prompt color
+# PROMPT_COLOR='blue'
+# PROMPT_COLOR='20'
+# PROMPT_COLOR='150'
+
+. .zshrc_origin
+```
+
 ## 必要なツール類
 
 - git
@@ -30,3 +41,9 @@ $ ./install.sh
 4. zsh周りのプラグインを入れる
 
 ※既に同名のリソースが存在していた場合、基本的に上書きはしない。
+
+## 調整ノブ
+
+- `PROMPT_COLOR`
+  - プロンプトの色を変更できる。デフォルトでは `green` が設定されている。
+  - `./color_sample.sh` を使用することで、色のサンプルを閲覧可能。

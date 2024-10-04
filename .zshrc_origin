@@ -12,9 +12,11 @@ zstyle ':vcs_info:*' actionformats "
 %F{yellow}(%r %b | %a)%f%c%u"
 precmd () { vcs_info }
 
+PROMPT_COLOR=${PROMPT_COLOR:-'green'}
+
 # command prompt setting
 PROMPT='
-%F{green}%n@%m%f:%F{033}%~%f $vcs_info_msg_0_
+%F{$PROMPT_COLOR}%n@%m%f:%F{033}%~%f $vcs_info_msg_0_
 $ '
 
 # alias for commands
