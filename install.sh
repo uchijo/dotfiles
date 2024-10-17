@@ -81,14 +81,14 @@ fi
 if [ ! -e "$HOME/.zsh/zsh-autosuggestions/" ]; then
     echo "installing zsh-autosuggestions"
     cd "$HOME/.zsh/"
-    git clone git@github.com:zsh-users/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-autosuggestions
 else
     echo "already installed: zsh-autosuggestions"
 fi
 if [ ! -e "$HOME/.zsh/zsh-syntax-highlighting/" ]; then
     echo "installing zsh-syntax-highlighting"
     cd "$HOME/.zsh/"
-    git clone git@github.com:zsh-users/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting
 else
     echo "already installed: zsh-syntax-highlighting"
 fi
