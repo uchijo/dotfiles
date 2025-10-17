@@ -89,3 +89,6 @@ function fzf-select-history() {
 zle -N fzf-select-history
 bindkey '^[h' fzf-select-history
 
+# append scripts
+export PATH="$PATH:$HOME/dotfiles/scripts"
+
