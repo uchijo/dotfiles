@@ -1,0 +1,1 @@
+git remote get-url origin | sed -e "s/git@github.com:/https\:\/\/github.com\//g" -e "s/\.git/\/pulls/g" | xargs $OPEN

@@ -24,6 +24,9 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 
+# run each distro specific settings. judge is done by each file.
+source ~/dotfiles/distro_settings/*
+
 # GOPATH settings
 export GOPATH=$HOME/go
 

@@ -1,0 +1,5 @@
+if [[ "$(uname -r)" == *-microsoft-standard-WSL2 ]]; then
+    export BROWSER='/mnt/c/Windows/System32/rundll32.exe url.dll,FileProtocolHandler'
+    export OPEN="/mnt/c/Windows/explorer.exe"
+    alias open="$OPEN"
+fi
