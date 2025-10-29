@@ -91,4 +91,5 @@ bindkey '^[h' fzf-select-history
 
 # append scripts
 export PATH="$PATH:$HOME/dotfiles/scripts"
+export PATH="$PATH:$GOPATH/bin"
 

@@ -39,6 +39,7 @@ create_symlink ".vimrc"
 create_symlink ".tmux.conf"
 create_symlink ".zshrc_origin"
 create_symlink ".gitconfig"
+create_symlink ".sqliterc"
 touch ~/.zshrc
 echo "[end]     create symbolic link"
 echo ""
