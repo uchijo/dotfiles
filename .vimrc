@@ -20,6 +20,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'ourigen/skyline.vim'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'nanotech/jellybeans.vim'
+	Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " colorscheme settings
