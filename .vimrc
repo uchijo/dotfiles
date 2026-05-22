@@ -14,6 +14,11 @@ nnoremap <Leader>h gT
 nnoremap <Leader>l gt
 let g:netrw_liststyle = 3
 
+" highlights
+set hlsearch
+set incsearch
+set scrolloff=5
+
 " vim-plug settings
 " example: Plug 'repo'
 call plug#begin('~/.vim/plugged')
@@ -34,4 +39,7 @@ highlight GitGutterAdd ctermfg=green ctermbg=236
 nnoremap ghu <Plug>(GitGutterUndoHunk)
 nnoremap ghs <Plug>(GitGutterStageHunk)
 nnoremap ghp <Plug>(GitGutterPreviewHunk)
+
+" for Gdiffsplit. disable folding
+set diffopt+=context:100000
 

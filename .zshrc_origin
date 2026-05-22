@@ -24,6 +24,9 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 
+# set manpager to vim, not less
+export MANPAGER="vim -M +MANPAGER -"
+
 # run each distro specific settings. judge is done by each file.
 source ~/dotfiles/distro_settings/*
 
